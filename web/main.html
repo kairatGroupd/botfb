@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Mavic Bot</title>
+	<script type="text/javascript" src="/eel.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="icon" href="bot-icon-0.jpg">
+</head>
+<body>
+
+	<form class="decor">
+		<div class="form-left-decoration"></div>
+		<div class="form-right-decoration"></div>
+		<div class="circle"></div>
+		<div class="form-inner">
+		<h3>Канфигурация бота</h3>
+		<input id="url_prof" type="text" placeholder="Введите ссылку профиля">
+		<input id="url_my_prof" type="file" placeholder="Загрузите файл с аккаунтами">
+		<input id="password" type="password" placeholder="Пароль для списка аккаунтов">
+		<input type="file" placeholder="Загрузите файл с коментариями" id="comment">
+		
+		<input type="submit" value="Запустить" id="btn">
+		</div>
+	</form>
+
+	<script type="text/javascript">
+		let btn = document.querySelector("#btn");
+
+		async function runBot() {
+			let url_prof = document.querySelector("#url_prof").value;
+			let password = document.querySelector("#password").value;
+			let url_my_prof = document.querySelector("#url_my_prof").files[0].name;
+			let comment = document.querySelector("#comment").files[0].name;
+			await eel.run_bot(url_prof, url_my_prof, password, comment);
+		}
+		btn.addEventListener("click", runBot);
+	</script>
+
+</body>
+</html>
